@@ -1,0 +1,61 @@
+#!/bin/bash
+
+CURRDIR=`dirname "$0"`
+BASEDIR=`cd "$CURRDIR"; cd ..; pwd`
+NAME=Mis-Generator
+
+VERSION=__BUILD_VERSION__
+#
+if [ "$1" = "-d" ]; then
+    shift
+    EXECUTEDIR=$1
+    shift
+else
+    EXECUTEDIR=$BASEDIR
+fi
+#
+if [ ! -d "$EXECUTEDIR" ]; then
+    echo "ERROR: $EXECUTEDIR is not a dir"
+    exit
+fi
+
+if [ ! -d "$EXECUTEDIR"/template ]; then
+    echo "ERROR: could not find $EXECUTEDIR/template/"
+    exit
+fi
+
+if [ ! -d "$EXECUTEDIR"/logs ]; then
+    mkdir "$EXECUTEDIR"/logs
+fi
+
+cd "$EXECUTEDIR"
+
+APP_HOME=$EXECUTEDIR
+APP_CONFIG=$EXECUTEDIR/template
+APP_LIB=$BASEDIR/libs
+APP_CLSPATH=$BASEDIR/classes:$APP_CONFIG:$APP_LIB/*
+APP_LOGS=$EXECUTEDIR/logs
+APP_OUT=$APP_LOGS/out.log
+MAIN=com.redteamobile.jdbc.wrap.tool.Generator
+
+HEAP_OPTS="-Xmx2048m -Xms2048m -XX:NewSize=128m"
+JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12105 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+JAVA_OPTS="-server -verbosegc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+UseConcMarkSweepGC -XX:+UseParNewGC $HEAP_OPTS"
+
+#
+start() {
+	 echo '======================================================'
+	 echo '' `java -version`
+     echo '  command:' $NAME $@
+     echo '     time:' `date "+%Y-%m-%d %H:%M:%S"`
+     echo '  apphome:' $APP_HOME
+     echo 'classpath:' $APP_CLSPATH
+     echo '======================================================'
+     java -classpath $APP_CLSPATH $JAVA_OPTS $JMX_OPTS $MAIN $@
+     exit 0
+}
+
+#
+RETVAL=0
+start $@
+exit $RETVAL
