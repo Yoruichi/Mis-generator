@@ -1,9 +1,0 @@
-com/redteamobile/jdbc/wrap/tool/metadata/MetaData.class
-com/redteamobile/jdbc/wrap/tool/util/JdbcUtil.class
-com/redteamobile/jdbc/wrap/tool/util/StringUtil.class
-com/redteamobile/jdbc/wrap/tool/metadata/DataModelColumn.class
-com/redteamobile/jdbc/wrap/tool/metadata/DataModelTable.class
-com/redteamobile/jdbc/wrap/tool/util/FreeMarker.class
-com/redteamobile/jdbc/wrap/tool/util/TypeConvertUtil.class
-com/redteamobile/jdbc/wrap/tool/Generator.class
-com/redteamobile/jdbc/wrap/tool/util/FileUtil.class
