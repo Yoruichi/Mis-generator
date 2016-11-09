@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-.gitignore
-*.iml
+#.idea
+#.gitignore
+#*.iml
 target
