@@ -2,7 +2,7 @@ package ${basePackage}.model;
 
 import java.io.Serializable;
 
-import com.redteamobile.jdbc.wrap.base.BasePo;
+import me.yoruichi.mis.BasePo;
 <#list importTypes as importType>
 ${importType}
 </#list>

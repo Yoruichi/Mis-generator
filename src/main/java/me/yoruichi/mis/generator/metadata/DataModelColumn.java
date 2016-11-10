@@ -1,8 +1,8 @@
-package com.redteamobile.jdbc.wrap.tool.metadata;
+package me.yoruichi.mis.generator.metadata;
 
 import com.google.common.base.Strings;
-import com.redteamobile.jdbc.wrap.tool.util.StringUtil;
-import com.redteamobile.jdbc.wrap.tool.util.TypeConvertUtil;
+import me.yoruichi.mis.generator.util.StringUtil;
+import me.yoruichi.mis.generator.util.TypeConvertUtil;
 
 /**
  * 数据库列的数据模型

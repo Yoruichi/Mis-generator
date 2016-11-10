@@ -1,6 +1,6 @@
-package com.redteamobile.jdbc.wrap.tool.util;
+package me.yoruichi.mis.generator.util;
 
-import com.redteamobile.jdbc.wrap.tool.metadata.DataModelTable;
+import me.yoruichi.mis.generator.metadata.DataModelTable;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.template.Configuration;

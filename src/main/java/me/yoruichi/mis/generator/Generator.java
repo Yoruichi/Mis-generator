@@ -1,11 +1,11 @@
-package com.redteamobile.jdbc.wrap.tool;
+package me.yoruichi.mis.generator;
 
 import com.google.common.base.Strings;
-import com.redteamobile.jdbc.wrap.tool.metadata.DataModelTable;
-import com.redteamobile.jdbc.wrap.tool.metadata.MetaData;
-import com.redteamobile.jdbc.wrap.tool.util.FileUtil;
-import com.redteamobile.jdbc.wrap.tool.util.FreeMarker;
-import com.redteamobile.jdbc.wrap.tool.util.JdbcUtil;
+import me.yoruichi.mis.generator.metadata.DataModelTable;
+import me.yoruichi.mis.generator.metadata.MetaData;
+import me.yoruichi.mis.generator.util.FileUtil;
+import me.yoruichi.mis.generator.util.FreeMarker;
+import me.yoruichi.mis.generator.util.JdbcUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 

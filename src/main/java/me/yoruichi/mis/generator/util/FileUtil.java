@@ -1,4 +1,4 @@
-package com.redteamobile.jdbc.wrap.tool.util;
+package me.yoruichi.mis.generator.util;
 
 import org.apache.commons.io.FileUtils;
 

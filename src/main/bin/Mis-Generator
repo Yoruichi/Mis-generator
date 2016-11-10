@@ -36,7 +36,7 @@ APP_LIB=$BASEDIR/libs
 APP_CLSPATH=$BASEDIR/classes:$APP_CONFIG:$APP_LIB/*
 APP_LOGS=$EXECUTEDIR/logs
 APP_OUT=$APP_LOGS/out.log
-MAIN=com.redteamobile.jdbc.wrap.tool.Generator
+MAIN=me.yoruichi.mis.generator.Generator
 
 HEAP_OPTS="-Xmx2048m -Xms2048m -XX:NewSize=128m"
 JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12105 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"

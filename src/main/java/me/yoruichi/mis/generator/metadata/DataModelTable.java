@@ -1,6 +1,6 @@
-package com.redteamobile.jdbc.wrap.tool.metadata;
+package me.yoruichi.mis.generator.metadata;
 
-import com.redteamobile.jdbc.wrap.tool.util.StringUtil;
+import me.yoruichi.mis.generator.util.StringUtil;
 
 import java.util.*;
 

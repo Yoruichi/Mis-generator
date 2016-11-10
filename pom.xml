@@ -73,7 +73,7 @@
                     </descriptors>
                     <archive>
                         <manifest>
-                            <mainClass>com.redteamobile.jdbc.wrap.tool.Generator</mainClass>
+                            <mainClass>me.yoruichi.mis.generator.Generator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

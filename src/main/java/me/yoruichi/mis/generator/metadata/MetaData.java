@@ -1,4 +1,4 @@
-package com.redteamobile.jdbc.wrap.tool.metadata;
+package me.yoruichi.mis.generator.metadata;
 
 import com.google.common.collect.Lists;
 
