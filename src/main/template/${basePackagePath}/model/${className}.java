@@ -1,5 +1,6 @@
 package ${basePackage}.model;
 
+import com.google.common.base.MoreObjects;
 import java.io.Serializable;
 
 import me.yoruichi.mis.BasePo;
@@ -16,8 +17,17 @@ public class ${className} extends BasePo {
     <#list dataModelColumns as column>
     private ${column.javaType} ${column.fieldName};//${column.sqlComment}
     </#list>
+
     public static ${className} build() {
         return new ${className}();
+    }
+    @Override
+    public String toString(){
+        return MoreObjects.toStringHelper(this)
+    <#list dataModelColumns as column>
+                .add("${column.fieldName}",${column.fieldName})
+    </#list>
+                .toString();
     }
 <@generateSetterGetter/>
 
