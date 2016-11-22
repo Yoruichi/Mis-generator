@@ -1,4 +1,4 @@
-package ${basePackage}.model;
+package ${basePackage}.model.entity;
 
 import com.google.common.base.MoreObjects;
 import java.io.Serializable;
