@@ -12,7 +12,7 @@ public class TypeConvertUtil {
 //key是java.sql.Types中的值，value是对应的java类型
 
     static {
-        typeMap.put(Types.TINYINT, "java.lang.Byte");//
+        typeMap.put(Types.TINYINT, "java.lang.Integer");//
         typeMap.put(Types.SMALLINT, "java.lang.Integer");//
         typeMap.put(Types.INTEGER, "java.lang.Integer");//
         typeMap.put(Types.BIGINT, "java.lang.Long");//
@@ -29,8 +29,8 @@ public class TypeConvertUtil {
         typeMap.put(Types.VARBINARY, "byte[]");//
         typeMap.put(Types.LONGVARBINARY, "byte[]");//
         typeMap.put(Types.DATE, "java.util.Date");//import java.sql.Date;
-        typeMap.put(Types.TIME, "java.sql.Time");//import java.sql.Time;
-        typeMap.put(Types.TIMESTAMP, "java.sql.Timestamp");//import java.sql.Timestamp;
+        typeMap.put(Types.TIME, "java.util.Date");//import java.sql.Time;
+        typeMap.put(Types.TIMESTAMP, "java.util.Date");//import java.sql.Timestamp;
         typeMap.put(Types.JAVA_OBJECT, "java.lang.Object");//
         typeMap.put(Types.BLOB, "byte[]");//
         typeMap.put(Types.CLOB, "java.lang.String");//
@@ -44,8 +44,17 @@ public class TypeConvertUtil {
      * @param sqlType
      * @return
      */
-    public static String getJavaType(int sqlType) {
+    public static String getJavaType(int sqlType, int sqlLength) {
         String javaType = (String) typeMap.get(sqlType);
+        if (sqlType == Types.TINYINT && sqlLength == 1) {
+            javaType = "java.lang.Boolean";
+        }
+        //这里添加一个处理，如果number的长度小于10（主键的长度设置为10），就转换成Integer
+        if (javaType.indexOf("java.lang.Long") == 0) {
+            if (sqlLength < 10) {
+                javaType = "java.lang.Integer";
+            }
+        }
         return javaType;
     }
 

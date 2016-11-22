@@ -47,19 +47,6 @@ public class DataModelColumn {
     private String fieldName;//该字段对应的java中的field，首字母小写的驼峰形式  例如：userFlag
     private String operName;//该字段对应的java中的setter和getter等操作的名称，首字母大写的驼峰形式   例如：UserFlag
 
-    public String getJavaTypeAll() {
-//		System.out.println("getJavaType:"+getFieldName()+":"+sqlName+":"+sqlTypeFlag);
-        String javaType = TypeConvertUtil.getJavaType(sqlTypeFlag);
-        //如果数据库定义的number,默认转换为Long
-        //这里添加一个处理，如果number的长度小于10（主键的长度设置为10），就转换成Integer
-        if (javaType.indexOf("java.lang.Long") == 0) {
-            if (Integer.valueOf(sqlLength) < 10) {
-                javaType = "java.lang.Integer";
-            }
-        }
-        return javaType;
-    }
-
     /**
      * 获取数据库字段类型对应的java类型，并且类型中去掉包名称，
      * 例如：java.lang.Integer,这里返回Integer
@@ -70,16 +57,8 @@ public class DataModelColumn {
      * <br>ModifyRecord：
      */
     public String getJavaType() {
-//		System.out.println("getJavaType:"+getFieldName()+":"+sqlName+":"+sqlTypeFlag);
-        String javaType = TypeConvertUtil.getJavaType(sqlTypeFlag);
+        String javaType = TypeConvertUtil.getJavaType(sqlTypeFlag, Integer.valueOf(sqlLength));
         //如果数据库定义的number,默认转换为Long
-        //这里添加一个处理，如果number的长度小于10（主键的长度设置为10），就转换成Integer
-        if (javaType.indexOf("java.lang.Long") == 0) {
-            //System.err.println(sqlName+"的类型"+sqlTypeName+" 长度"+sqlLength);
-            if (Integer.valueOf(sqlLength) < 10) {
-                javaType = "java.lang.Integer";
-            }
-        }
 
         if (javaType.indexOf("java.lang") == 0) {//去掉java类型中的java.lang
             javaType = javaType.substring(10, javaType.length());
