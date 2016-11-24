@@ -43,7 +43,7 @@ public class ${className}Controller extends BaseController {
                     + "}") @RequestBody JsonNode jsonNode
     ) throws Exception {
         ${className} entity = new ObjectMapper().readValue(jsonNode.toString(), ${className}.class);
-        i${className}Dao.insertOne(entuty);
+        i${className}Dao.insertOne(entity);
         return succ(entity);
     }
 }
