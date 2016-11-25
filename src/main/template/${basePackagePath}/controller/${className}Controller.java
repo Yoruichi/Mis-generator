@@ -1,6 +1,7 @@
 package ${basePackage}.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ${basePackage}.dao.${className}Dao;
 import ${basePackage}.model.entity.${className};
 import ${basePackage}.model.page.ResponseStruct;
@@ -31,7 +32,7 @@ public class ${className}Controller extends BaseController {
         if (pageSize <= 0) pageSize = 10;
 
         return succ(i${className}Dao.selectMany(
-        (${className}) i${className}.build().setLimit(pageSize).setIndex((pageNum - 1) * pageSize)));
+        (${className}) ${className}.build().setLimit(pageSize).setIndex((pageNum - 1) * pageSize)));
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -41,6 +42,8 @@ public class ${className}Controller extends BaseController {
                     + "\t\"property\":\"value.\"\n"
                     + "}") @RequestBody JsonNode jsonNode
     ) throws Exception {
-        return succ(jsonNode.toString());
+        ${className} entity = new ObjectMapper().readValue(jsonNode.toString(), ${className}.class);
+        i${className}Dao.insertOne(entity);
+        return succ(entity);
     }
 }
