@@ -57,7 +57,8 @@ public class DataModelColumn {
      * <br>ModifyRecord：
      */
     public String getJavaType() {
-        String javaType = TypeConvertUtil.getJavaType(sqlTypeFlag, Integer.valueOf(sqlLength));
+        String javaType = TypeConvertUtil
+                .getJavaType(sqlTypeFlag, Integer.valueOf(sqlLength == null ? "1" : sqlLength));
         //如果数据库定义的number,默认转换为Long
 
         if (javaType.indexOf("java.lang") == 0) {//去掉java类型中的java.lang
