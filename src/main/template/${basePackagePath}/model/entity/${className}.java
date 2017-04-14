@@ -1,9 +1,9 @@
-package ${basePackage}.model;
+package ${basePackage}.model.entity;
 
 import com.google.common.base.MoreObjects;
 import java.io.Serializable;
 
-import me.yoruichi.mis.BasePo;
+import com.redteamobile.mis.BasePo;
 <#list importTypes as importType>
 ${importType}
 </#list>

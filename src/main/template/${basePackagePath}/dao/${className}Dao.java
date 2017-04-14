@@ -1,8 +1,8 @@
 package ${basePackage}.dao;
 
 import org.springframework.stereotype.Repository;
-import me.yoruichi.mis.BaseDao;
-import ${basePackage}.model.${className};
+import com.redteamobile.mis.BaseDao;
+import ${basePackage}.model.entity.${className};
 
 @Repository
 public class ${className}Dao extends BaseDao<${className}>{
