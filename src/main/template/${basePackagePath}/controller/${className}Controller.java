@@ -1,9 +1,7 @@
 package ${basePackage}.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ${basePackage}.dao.${className}Dao;
-import ${basePackage}.model.entity.${className};
+import ${basePackage}.service.po.${className}Service;
+import ${basePackage}.model.req.${className}Req;
 import ${basePackage}.model.page.ResponseStruct;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,35 +13,20 @@ import org.springframework.web.bind.annotation.*;
 public class ${className}Controller extends BaseController {
 
     @Autowired
-    private ${className}Dao i${className}Dao;
+    private ${className}Service i${className}Service;
 
     @RequestMapping(value = "/all", method = RequestMethod.POST)
-    @ApiOperation(value = "获取全部${className}的接口", response = ${className}.class)
+    @ApiOperation(value = "获取全部${className}的接口", response = ${className}Req.class)
     public ResponseStruct get${className}s() throws Exception {
-        return succ(i${className}Dao.selectMany(${className}.build()));
-    }
-
-    @RequestMapping(value = "/page", method = RequestMethod.POST)
-    @ApiOperation(value = "获取分页${className}的接口", response = ${className}.class)
-    public ResponseStruct get${className}sByPage(
-            @RequestParam(defaultValue = "1") int pageNum,
-            @RequestParam(defaultValue = "10") int pageSize) throws Exception {
-        if (pageNum <= 0) pageNum = 1;
-        if (pageSize <= 0) pageSize = 10;
-
-        return succ(i${className}Dao.selectMany(
-        (${className}) ${className}.build().setLimit(pageSize).setIndex((pageNum - 1) * pageSize)));
+        return succ(i${className}Service.queryAll());
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @ApiOperation(value = "添加一个${className}", response = ${className}.class)
+    @ApiOperation(value = "添加一个${className}", response = ${className}Req.class)
     public ResponseStruct add${className}(
-            @ApiParam(required = true, value = "{\n"
-                    + "\t\"property\":\"value.\"\n"
-                    + "}") @RequestBody JsonNode jsonNode
+             @RequestBody ${className}Req req
     ) throws Exception {
-        ${className} entity = new ObjectMapper().readValue(jsonNode.toString(), ${className}.class);
-        i${className}Dao.insertOne(entity);
+        i${className}Service.saveOne(req);
         return succ(entity);
     }
 }
