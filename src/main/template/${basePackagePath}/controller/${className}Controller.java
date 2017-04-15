@@ -27,6 +27,6 @@ public class ${className}Controller extends BaseController {
              @RequestBody ${className}Req req
     ) throws Exception {
         i${className}Service.saveOne(req);
-        return succ(entity);
+        return succ();
     }
 }
