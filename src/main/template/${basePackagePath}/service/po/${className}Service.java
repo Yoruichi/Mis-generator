@@ -27,6 +27,18 @@ public class ${className}Service {
     public List<${className}> queryAll() throws Exception {
         return i${className}Dao.selectMany(${className}.build());
     }
+    
+    public ${className} query(${className}Req req) throws Exception {
+        return i${className}Dao.select(this.translateFromReq(req));
+    }
+    
+    public ${className} query(${className} req) throws Exception {
+        return i${className}Dao.select(req);
+    }
+    
+    public List<${className}> queryMany(${className} req) throws Exception {
+        return i${className}Dao.selectMany(req);
+    }
 
     private ${className} translateFromReq(${className}Req req) throws Exception {
         ${className} entity = ${className}.build()
