@@ -11,18 +11,18 @@ import com.jcabi.aspects.Loggable;
 public interface ${className}Service {
 
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
-    boolean saveOne(${className} req) throws Exception;
+    boolean saveOne(${className}Req req) throws Exception;
 
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
     List<${className}> queryAll() throws Exception;
 
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
-    List<${className}> queryPage(${className} req, int page, int pageSize) throws Exception;
+    List<${className}> queryPage(${className}Req req, int page, int pageSize) throws Exception;
 
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
-    ${className} query(${className} req) throws Exception;
+    ${className} query(${className}Req req) throws Exception;
 
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
-    List<${className}> queryMany(${className} req) throws Exception;
+    List<${className}> queryMany(${className}Req req) throws Exception;
 
 }

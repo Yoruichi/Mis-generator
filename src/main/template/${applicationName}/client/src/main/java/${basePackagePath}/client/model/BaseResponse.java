@@ -15,33 +15,33 @@ public class BaseResponse<T extends Serializable> implements Serializable {
     String msg;
     T data;
 
-    private CoinFoundResponse(Integer code, String msg, T data) {
+    private BaseResponse(Integer code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> failedByInvalidParameter(String parameterName) {
+    public static <T extends Serializable> BaseResponse<T> failedByInvalidParameter(String parameterName) {
         return failed(ErrorCode.INVALID_PARAMETER, String.format(ErrorCode.INVALID_PARAMETER_MSG, parameterName));
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> failedByPermission() {
+    public static <T extends Serializable> BaseResponse<T> failedByPermission() {
         return failed(ErrorCode.ACCESS_DENIED, ErrorCode.ACCESS_DENIED_MSG);
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> failed() {
+    public static <T extends Serializable> BaseResponse<T> failed() {
         return failed(ErrorCode.SYSTEM_ERROR, ErrorCode.SYSTEM_ERROR_MSG);
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> failed(Integer code, String msg) {
-        return new CoinFoundResponse<>(code, msg, null);
+    public static <T extends Serializable> BaseResponse<T> failed(Integer code, String msg) {
+        return new BaseResponse<>(code, msg, null);
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> success(T data) {
-        return new CoinFoundResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, data);
+    public static <T extends Serializable> BaseResponse<T> success(T data) {
+        return new BaseResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, data);
     }
 
-    public static <T extends Serializable> CoinFoundResponse<T> success() {
-        return new CoinFoundResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, null);
+    public static <T extends Serializable> BaseResponse<T> success() {
+        return new BaseResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, null);
     }
 }

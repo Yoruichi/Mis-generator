@@ -17,10 +17,13 @@ ${importType}
  */
 @Data
 @Builder
-public class ${className} extends BasePo {
+public class ${className} extends BasePo implements Serializable {
 
     <#list dataModelColumns as column>
-    private ${column.javaType} ${column.fieldName};//${column.sqlComment}
+    /**
+     * ${column.sqlComment}
+     */
+    private ${column.javaType} ${column.fieldName};
     </#list>
 
     @Tolerate

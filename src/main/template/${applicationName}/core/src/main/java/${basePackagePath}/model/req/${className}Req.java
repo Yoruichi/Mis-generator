@@ -19,7 +19,7 @@ ${importType}
 public class ${className}Req implements Serializable {
 
     <#list dataModelColumns as column>
-    private ${column.javaType} ${column.fieldName};//${column.sqlComment}
+    private ${column.javaType} ${column.fieldName};
     </#list>
 
     private int page;

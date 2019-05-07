@@ -20,35 +20,35 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
     public List<${className}> queryAll() throws Exception {
-        return i${className}Dao.selectMany(${className}.build());
+        return i${className}Dao.selectMany(${className}.builder().build());
     }
 
     @Override
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
-    public List<${className}> queryPage(${className} req, int page, int pageSize) throws Exception {
+    public List<${className}> queryPage(${className}Req req, int page, int pageSize) throws Exception {
         int idx = pageSize * (page - 1);
-        req.setIndex(idx).setLimit(pageSize);
-        return i${className}Dao.selectMany(${className}.build());
+        ${className} condition = translateFromReq(req);
+        condition.setIndex(idx).setLimit(pageSize);
+        return i${className}Dao.selectMany(condition);
     }
 
     @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
-    public ${className} query(${className} req) throws Exception {
-        return i${className}Dao.select(req);
+    public ${className} query(${className}Req req) throws Exception {
+        return i${className}Dao.select(translateFromReq(req));
     }
 
     @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
-    public List<${className}> queryMany(${className} req) throws Exception {
-        return i${className}Dao.selectMany(req);
+    public List<${className}> queryMany(${className}Req req) throws Exception {
+        return i${className}Dao.selectMany(translateFromReq(req));
     }
 
     private ${className} translateFromReq(${className}Req req) throws Exception {
-        ${className} entity = ${className}.build()
+        return ${className}.builder()
         <#list dataModelColumns as column>
-            .set${column.operName}(req.get${column.operName}())//${column.sqlComment}
+            .${column.fieldName}(req.get${column.operName}())
         </#list>
-        ;
-        return entity;
+        .build();
     }
 }
