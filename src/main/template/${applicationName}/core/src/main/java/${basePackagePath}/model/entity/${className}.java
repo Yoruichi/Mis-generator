@@ -3,10 +3,9 @@ package ${basePackage}.model.entity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Tolerate;
-
+import me.yoruichi.mis.BasePo;
 import java.io.Serializable;
 
-import com.redteamobile.mis.BasePo;
 <#list importTypes as importType>
 ${importType}
 </#list>

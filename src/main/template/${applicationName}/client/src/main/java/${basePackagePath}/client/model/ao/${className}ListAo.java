@@ -6,7 +6,6 @@ import lombok.experimental.Tolerate;
 import java.util.List;
 import java.io.Serializable;
 
-import com.redteamobile.mis.BasePo;
 <#list importTypes as importType>
         ${importType}
 </#list>
