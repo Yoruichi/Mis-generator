@@ -1,7 +1,8 @@
 package ${basePackage}.controller;
 
-import ${basePackage}.service.po.${className}Service;
+import ${basePackage}.service.${className}Service;
 import ${basePackage}.model.req.${className}Req;
+import ${basePackage}.model.entity.${className};
 import ${basePackage}.util.ObjectConverter;
 import ${basePackage}.client.model.BaseResponse;
 import ${basePackage}.client.model.ao.*;
@@ -14,6 +15,7 @@ import com.jcabi.aspects.Loggable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -31,7 +33,7 @@ public class ${className}Controller {
     public BaseResponse<${className}ListAo> get${className}s() throws Exception {
         List<${className}> res = i${className}Service.queryAll();
         List<${className}Ao> list = res.stream().map(o -> ObjectConverter.convertFrom(o, ${className}Ao.builder().build())).collect(Collectors.toList());
-        return succ(${className}ListAo.builder().list(list).build());
+        return success(${className}ListAo.builder().list(list).build());
     }
 
     @RequestMapping(value = "/page", method = RequestMethod.POST)
@@ -40,7 +42,7 @@ public class ${className}Controller {
     public BaseResponse<${className}ListAo> get${className}s(@NotNull @RequestBody ${className}Req req, @RequestParam("page") int page, @RequestParam("size") int size) throws Exception {
         List<${className}> res = i${className}Service.queryPage(req, page, size);
         List<${className}Ao> list = res.stream().map(o -> ObjectConverter.convertFrom(o, ${className}Ao.builder().build())).collect(Collectors.toList());
-        return succ(${className}ListAo.builder().list(list).build());
+        return success(${className}ListAo.builder().list(list).build());
     }
 
     @RequestMapping(value = "/one", method = RequestMethod.POST)
@@ -49,9 +51,9 @@ public class ${className}Controller {
     public BaseResponse<${className}Ao> get${className}(@NotNull @RequestBody ${className}Req req) throws Exception {
         ${className} res = i${className}Service.query(req);
         if (Objects.isNull(res)) {
-            return succ();
+            return success();
         }
-        return succ(ObjectConverter.convertFrom(res, ${className}Ao.builder().build()));
+        return success(ObjectConverter.convertFrom(res, ${className}Ao.builder().build()));
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -59,6 +61,6 @@ public class ${className}Controller {
     @Loggable(trim = false, name = "${basePackage}.controller.${className}Controller")
     public BaseResponse add${className}(@NotNull @RequestBody ${className}Req req) throws Exception {
         i${className}Service.saveOne(req);
-        return succ();
+        return success();
     }
 }

@@ -1,6 +1,5 @@
 package ${basePackage}.client.model;
 
-import ${basePackage}.client.model.ErrorCode;
 import lombok.Data;
 import org.apache.http.HttpStatus;
 

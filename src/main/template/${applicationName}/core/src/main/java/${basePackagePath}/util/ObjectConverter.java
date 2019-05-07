@@ -1,4 +1,4 @@
-package com.superatomfin.heimdall.core.service;
+package ${basePackage}.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;

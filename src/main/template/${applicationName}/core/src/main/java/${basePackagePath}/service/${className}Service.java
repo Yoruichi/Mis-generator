@@ -1,4 +1,4 @@
-package ${basePackage}.service.po;
+package ${basePackage}.service;
 
 import java.util.List;
 
