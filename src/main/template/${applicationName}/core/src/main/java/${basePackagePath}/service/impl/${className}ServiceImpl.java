@@ -3,7 +3,6 @@ package ${basePackage}.service.impl;
 import java.util.List;
 
 import ${basePackage}.model.entity.${className};
-import ${basePackage}.model.req.${className}Req;
 import ${basePackage}.dao.${className}Dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +17,27 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Autowired
     private ${className}Dao i${className}Dao;
 
-    @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
-    public boolean saveOne(${className}Req req) throws Exception {
-        i${className}Dao.insertOne(this.translateFromReq(req));
-        return true;
-    }
-
+    @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
     public List<${className}> queryAll() throws Exception {
         return i${className}Dao.selectMany(${className}.build());
     }
 
-    @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
-    public ${className} query(${className}Req req) throws Exception {
-        return i${className}Dao.select(this.translateFromReq(req));
+    @Override
+    @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
+    public List<${className}> queryPage(${className} req, int page, int pageSize) throws Exception {
+        int idx = pageSize * (page - 1);
+        req.setIndex(idx).setLimit(pageSize);
+        return i${className}Dao.selectMany(${className}.build());
     }
 
+    @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
     public ${className} query(${className} req) throws Exception {
         return i${className}Dao.select(req);
     }
 
+    @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")
     public List<${className}> queryMany(${className} req) throws Exception {
         return i${className}Dao.selectMany(req);

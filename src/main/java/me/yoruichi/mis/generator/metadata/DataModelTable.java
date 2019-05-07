@@ -13,6 +13,9 @@ public class DataModelTable {
     private String sqlType;//数据库中的表类型，table或view
     private String sqlComment;//数据库中的表注释
 
+    private String applicationName;
+    private String applicationDesc;
+
     /**
      * 1.对表名称的注释
      *
@@ -183,5 +186,21 @@ public class DataModelTable {
     public DataModelTable setBasePackage(String basePackage) {
         this.basePackage = basePackage;
         return this;
+    }
+
+    public String getApplicationDesc() {
+        return applicationDesc;
+    }
+
+    public void setApplicationDesc(String applicationDesc) {
+        this.applicationDesc = applicationDesc;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public void setApplicationName(String applicationName) {
+        this.applicationName = applicationName;
     }
 }

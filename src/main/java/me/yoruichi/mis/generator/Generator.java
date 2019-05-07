@@ -70,6 +70,8 @@ public class Generator {
         String templatePath = "template/";
         String targetPath = "gen-java/";
         String packageName = "";
+        String applicationName = "";
+        String applicationDesc = "";
         String encode = "UTF-8";
 
         for (int i = 0; i < args.length; i = i + 2) {
@@ -111,6 +113,12 @@ public class Generator {
                 case "-a":
                     packageName = value;
                     break;
+                case "-n":
+                    applicationName = value;
+                    break;
+                case "--desc":
+                    applicationDesc = value;
+                    break;
             }
         }
         if (Strings.isNullOrEmpty(driver)
@@ -143,6 +151,8 @@ public class Generator {
                 System.out.println("一共" + tableNames.size() + "个表。正在处理表:" + tableName);
                 DataModelTable dmTable = MetaData.getTable(conn, tableName);//1.获取数据模型对象
                 dmTable.setBasePackage(packageName);
+                dmTable.setApplicationName(applicationName);
+                dmTable.setApplicationDesc(applicationDesc);
                 Configuration conf = FreeMarker
                         .getFreeMarkerConfiguration(encode, new File(templatePath));//2.获取模板引擎
                 //3.获取所有模板文件

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @DubboComponentScan("${basePackage}.rpc")
-@ComponentScan({ "com.yoruichi", ${basePackage} })
+@ComponentScan({ "com.yoruichi", "${basePackage}" })
 public class MainApplication {
 
     public static void main(String[] args) {
