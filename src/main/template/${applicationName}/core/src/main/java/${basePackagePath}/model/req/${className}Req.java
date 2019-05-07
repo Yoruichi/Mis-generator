@@ -22,9 +22,6 @@ public class ${className}Req implements Serializable {
     private ${column.javaType} ${column.fieldName};
     </#list>
 
-    private int page;
-    private int pageSize;
-
     @Tolerate
     public ${className}Req() {
     }
