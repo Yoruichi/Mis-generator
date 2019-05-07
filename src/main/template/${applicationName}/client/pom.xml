@@ -6,11 +6,11 @@
         <groupId>${basePackage}</groupId>
         <artifactId>parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>${basePackage}</groupId>
     <artifactId>client</artifactId>
     <version><#noparse>${children.version}</#noparse></version>
+    <packaging>jar</packaging>
     <name>client</name>
 
     <dependencies>
@@ -30,6 +30,5 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 
 </project>
