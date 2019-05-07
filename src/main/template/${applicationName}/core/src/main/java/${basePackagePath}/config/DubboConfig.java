@@ -1,4 +1,4 @@
-package <#noparse>${basePackage}.config;
+package ${basePackage}.config;
 
 import com.alibaba.dubbo.config.*;
 import lombok.extern.slf4j.Slf4j;
