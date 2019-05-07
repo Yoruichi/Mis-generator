@@ -4,7 +4,7 @@ import java.util.List;
 
 import ${basePackage}.model.entity.${className};
 import ${basePackage}.dao.${className}Dao;
-
+import ${basePackage}.model.req.${className}Req;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +16,13 @@ public class ${className}ServiceImpl implements ${className}Service {
 
     @Autowired
     private ${className}Dao i${className}Dao;
+
+    @Override
+    @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
+    boolean saveOne(${className}Req req) throws Exception {
+        i${className}Dao.insertOne(translateFromReq(req));
+        return true;
+    }
 
     @Override
     @Loggable(trim = false, name = "${basePackage}.service.impl.${className}ServiceImpl")

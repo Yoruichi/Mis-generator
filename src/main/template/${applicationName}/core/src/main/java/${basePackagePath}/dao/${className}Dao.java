@@ -1,7 +1,7 @@
 package ${basePackage}.dao;
 
+import me.yoruichi.mis.BaseDao;
 import org.springframework.stereotype.Repository;
-import com.redteamobile.mis.BaseDao;
 import ${basePackage}.model.entity.${className};
 
 @Repository
