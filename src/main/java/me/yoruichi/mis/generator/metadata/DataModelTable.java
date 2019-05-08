@@ -50,13 +50,13 @@ public class DataModelTable {
             if ("BigDecimal".equals(dm.getJavaType())) {
                 imports.add("import java.math.BigDecimal;");
             }
-            if ("Date".equals(dm.getJavaType())) {
+            if ("LocalDate".equals(dm.getJavaType())) {
                 imports.add("import java.time.LocalDate;");
             }
-            if ("Time".equals(dm.getJavaType())) {
+            if ("LocalTime".equals(dm.getJavaType())) {
                 imports.add("import java.time.LocalTime;");
             }
-            if ("Timestamp".equals(dm.getJavaType())) {
+            if ("LocalDateTime".equals(dm.getJavaType())) {
                 imports.add("import java.time.LocalDateTime;");
             }
         }
@@ -202,5 +202,9 @@ public class DataModelTable {
 
     public void setApplicationName(String applicationName) {
         this.applicationName = applicationName;
+    }
+
+    public void setImportTypes(Set<String> importTypes) {
+        this.importTypes = importTypes;
     }
 }
