@@ -14,6 +14,7 @@ public class DataModelColumn {
     private String sqlLength;//列长度
     private boolean sqlPk;//是否为主键
     private boolean sqlBlank;//是否为空
+    private boolean unsigned;
     private String sqlComment;//列注释
 
     public String getSqlComment() {
@@ -57,8 +58,7 @@ public class DataModelColumn {
      * <br>ModifyRecord：
      */
     public String getJavaType() {
-        String javaType = TypeConvertUtil
-                .getJavaType(sqlTypeFlag, Integer.valueOf(sqlLength == null ? "1" : sqlLength));
+        String javaType = TypeConvertUtil.getJavaType(this);
         //如果数据库定义的number,默认转换为Long
 
         if (javaType.indexOf("java.lang") == 0) {//去掉java类型中的java.lang
@@ -68,6 +68,9 @@ public class DataModelColumn {
             javaType = javaType.substring(10, javaType.length());
         }
         if (javaType.indexOf("java.util") == 0) {//去掉java类型中的java.util
+            javaType = javaType.substring(10, javaType.length());
+        }
+        if (javaType.indexOf("java.time") == 0) {//去掉java类型中的java.util
             javaType = javaType.substring(10, javaType.length());
         }
         if (javaType.indexOf("java.sql") == 0) {//去掉java类型中的java.sql
@@ -157,5 +160,11 @@ public class DataModelColumn {
         this.sqlTypeFlag = sqlTypeFlag;
     }
 
+    public boolean isUnsigned() {
+        return unsigned;
+    }
 
+    public void setUnsigned(boolean unsigned) {
+        this.unsigned = unsigned;
+    }
 }

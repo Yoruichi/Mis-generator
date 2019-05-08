@@ -39,10 +39,11 @@ public class ${className}Controller {
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     @ApiOperation(value = "获取分页${className}的接口", response = ${className}Req.class)
     @Loggable(trim = false, name = "${basePackage}.controller.${className}Controller")
-    public BaseResponse<${className}ListAo> get${className}s(@NotNull @RequestBody ${className}Req req, @RequestParam("page") int page, @RequestParam("size") int size) throws Exception {
+    public BaseResponse<${className}PageAo> get${className}s(@NotNull @RequestBody ${className}Req req, @RequestParam("page") int page, @RequestParam("size") int size) throws Exception {
         List<${className}> res = i${className}Service.queryPage(req, page, size);
         List<${className}Ao> list = res.stream().map(o -> ObjectConverter.convertFrom(o, ${className}Ao.builder().build())).collect(Collectors.toList());
-        return success(${className}ListAo.builder().list(list).build());
+        Long totalCount = i${className}Service.count(req);
+        return success(${className}PageAo.builder().list(list).page(page).pageSize(size).totalCount(totalCount).build());
     }
 
     @RequestMapping(value = "/one", method = RequestMethod.POST)

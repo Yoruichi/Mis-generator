@@ -14,7 +14,7 @@ public class DataModelTable {
     private String sqlComment;//数据库中的表注释
 
     private String applicationName;
-    private String applicationDesc;
+    private String applicationDescription;
 
     /**
      * 1.对表名称的注释
@@ -51,13 +51,13 @@ public class DataModelTable {
                 imports.add("import java.math.BigDecimal;");
             }
             if ("Date".equals(dm.getJavaType())) {
-                imports.add("import java.util.Date;");
+                imports.add("import java.time.LocalDate;");
             }
             if ("Time".equals(dm.getJavaType())) {
-                imports.add("import java.sql.Time;");
+                imports.add("import java.time.LocalTime;");
             }
             if ("Timestamp".equals(dm.getJavaType())) {
-                imports.add("import java.sql.Timestamp;");
+                imports.add("import java.time.LocalDateTime;");
             }
         }
         return imports;
@@ -188,12 +188,12 @@ public class DataModelTable {
         return this;
     }
 
-    public String getApplicationDesc() {
-        return applicationDesc;
+    public String getApplicationDescription() {
+        return applicationDescription;
     }
 
-    public void setApplicationDesc(String applicationDesc) {
-        this.applicationDesc = applicationDesc;
+    public void setApplicationDescription(String applicationDesc) {
+        this.applicationDescription = applicationDesc;
     }
 
     public String getApplicationName() {

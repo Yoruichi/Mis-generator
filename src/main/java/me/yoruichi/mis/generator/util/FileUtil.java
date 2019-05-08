@@ -81,7 +81,7 @@ public class FileUtil {
      */
     public static void listFiles(File file, List collector) throws IOException {
         collector.add(file);
-        if ((!file.isHidden() && file.isDirectory()) && !isIgnoreFile(
+        if ((".gitignore".equals(file.getName())) || (!file.isHidden() && file.isDirectory()) && !isIgnoreFile(
                 file)) {//如果不是隐藏文件，并且是目录，并且不是被忽略的文件
             File[] subFiles = file.listFiles();//获取该目录下的所有文件
             for (int i = 0; i < subFiles.length; i++) {

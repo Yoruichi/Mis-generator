@@ -52,6 +52,12 @@ public class ${className}ServiceImpl implements ${className}Service {
         return i${className}Dao.selectMany(translateFromReq(req));
     }
 
+    @Override
+    @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
+    public Long count(${className}Req req) throws Exception {
+        return i${className}Dao.selectCount(translateFromReq(req));
+    }
+
     private ${className} translateFromReq(${className}Req req) throws Exception {
         return ${className}.builder()
         <#list dataModelColumns as column>

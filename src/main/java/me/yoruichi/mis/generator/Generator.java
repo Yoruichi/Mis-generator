@@ -54,6 +54,7 @@ public class Generator {
                 + " -template  template file path default current path template\n"
                 + " -target  target file path default current gen-java\n"
                 + " -encode  default UTF-8\n"
+                + " -n  application name\n"
                 + " -a  package name";
         if (args.length < 0 || args.length % 2 == 1) {
             System.out.println(usage);
@@ -71,7 +72,7 @@ public class Generator {
         String targetPath = "gen-java/";
         String packageName = "";
         String applicationName = "";
-        String applicationDesc = "";
+        String applicationDesc = "Bitrue awesome project.";
         String encode = "UTF-8";
 
         for (int i = 0; i < args.length; i = i + 2) {
@@ -125,6 +126,7 @@ public class Generator {
                 || Strings.isNullOrEmpty(username)
                 || Strings.isNullOrEmpty(password)
                 || Strings.isNullOrEmpty(packageName)
+                || Strings.isNullOrEmpty(applicationName)
                 ) {
             System.out.println(usage);
             System.exit(-1);
@@ -152,7 +154,7 @@ public class Generator {
                 DataModelTable dmTable = MetaData.getTable(conn, tableName);//1.获取数据模型对象
                 dmTable.setBasePackage(packageName);
                 dmTable.setApplicationName(applicationName);
-                dmTable.setApplicationDesc(applicationDesc);
+                dmTable.setApplicationDescription(applicationDesc);
                 Configuration conf = FreeMarker
                         .getFreeMarkerConfiguration(encode, new File(templatePath));//2.获取模板引擎
                 //3.获取所有模板文件

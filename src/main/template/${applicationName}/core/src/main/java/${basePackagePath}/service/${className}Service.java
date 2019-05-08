@@ -25,4 +25,7 @@ public interface ${className}Service {
     @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
     List<${className}> queryMany(${className}Req req) throws Exception;
 
+    @Loggable(trim = false, name = "${basePackage}.service.${className}Service")
+    Long count(${className}Req req) throws Exception;
+
 }
