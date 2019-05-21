@@ -184,8 +184,9 @@ public class Generator {
                     System.out.println("目标文件相对路径:" + templateRelativePath);
 
                     //过滤模板文件：是目录或隐藏的跳过，相对路径是空的跳过，以.include结尾的跳过
-                    if (templateFile.isDirectory() || templateFile.isHidden())
+                    if (templateFile.isDirectory() || (templateFile.isHidden() && !templateFile.getName().equals(".gitignore"))) {
                         continue;
+                    }
                     if (templateFile.getName().toLowerCase().endsWith(".include")) {
                         continue;
                     }
@@ -193,10 +194,10 @@ public class Generator {
                     Template t = conf.getTemplate(templateRelativePath);//获取模板文件对象，注意传入相对于模板根目录的路径文件
                     t.setEncoding(encode);
                     if (targetOutputFilePath.exists()) {//如果文件存在，说明是追加的情况
-                        String appendContext = FreeMarker.generateString(dmTable, t);
-                        Writer out = new FileWriter(targetOutputFilePath, true);//第二个参数设置为true，表示追加
-                        out.write(appendContext);
-                        out.close();
+//                        String appendContext = FreeMarker.generateString(dmTable, t);
+//                        Writer out = new FileWriter(targetOutputFilePath, true);//第二个参数设置为true，表示追加
+//                        out.write(appendContext);
+//                        out.close();
                         continue;
                     }
 
