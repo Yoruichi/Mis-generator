@@ -1,15 +1,11 @@
 package ${basePackage}.client.model;
 
 import lombok.Data;
-import org.apache.http.HttpStatus;
 
 import java.io.Serializable;
-
+import static ${basePackage}.client.model.ErrorCode.*;
 @Data
 public class BaseResponse<T extends Serializable> implements Serializable {
-    private static final int SUCCESS_CODE = HttpStatus.SC_OK;
-    private static final String SUCCESS_MSG = "success";
-
     Integer code;
     String msg;
     T data;
@@ -21,15 +17,15 @@ public class BaseResponse<T extends Serializable> implements Serializable {
     }
 
     public static <T extends Serializable> BaseResponse<T> failedByInvalidParameter(String parameterName) {
-        return failed(ErrorCode.INVALID_PARAMETER, String.format(ErrorCode.INVALID_PARAMETER_MSG, parameterName));
+        return failed(INVALID_PARAMETER, String.format(INVALID_PARAMETER_MSG, parameterName));
     }
 
     public static <T extends Serializable> BaseResponse<T> failedByPermission() {
-        return failed(ErrorCode.ACCESS_DENIED, ErrorCode.ACCESS_DENIED_MSG);
+        return failed(ACCESS_DENIED, ACCESS_DENIED_MSG);
     }
 
     public static <T extends Serializable> BaseResponse<T> failed() {
-        return failed(ErrorCode.SYSTEM_ERROR, ErrorCode.SYSTEM_ERROR_MSG);
+        return failed(SYSTEM_ERROR, SYSTEM_ERROR_MSG);
     }
 
     public static <T extends Serializable> BaseResponse<T> failed(Integer code, String msg) {
@@ -37,10 +33,10 @@ public class BaseResponse<T extends Serializable> implements Serializable {
     }
 
     public static <T extends Serializable> BaseResponse<T> success(T data) {
-        return new BaseResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, data);
+        return new BaseResponse<>(SUCCESS_CODE, SUCCESS_MSG, data);
     }
 
     public static <T extends Serializable> BaseResponse<T> success() {
-        return new BaseResponse<>(HttpStatus.SC_OK, SUCCESS_MSG, null);
+        return new BaseResponse<>(SUCCESS_CODE, SUCCESS_MSG, null);
     }
 }

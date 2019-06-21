@@ -5,6 +5,9 @@ package ${basePackage}.client.model;
  * @Date: 2018/11/27 6:46 PM
  */
 public class ErrorCode {
+    public static final int SUCCESS_CODE = 200;
+    public static final String SUCCESS_MSG = "success";
+
     public static final int INVALID_PARAMETER = 400;
     public static final String INVALID_PARAMETER_MSG = "Invalid parameter %s for given.";
     public static final int ACCESS_DENIED = 403;
