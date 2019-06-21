@@ -2,6 +2,7 @@ package ${basePackage}.model.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Tolerate;
 import me.yoruichi.mis.BasePo;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ ${importType}
  */
 @Data
 @Builder
+@EqualsAndHashCode(callSuper = false)
 public class ${className} extends BasePo implements Serializable {
 
     <#list dataModelColumns as column>

@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>${basePackage}</groupId>
-    <artifactId>client</artifactId>
+    <artifactId>${applicationName}-client</artifactId>
     <version><#noparse>${children.version}</#noparse></version>
     <packaging>jar</packaging>
-    <name>client</name>
+    <name>${applicationName}-client</name>
 
     <dependencies>
         <dependency>
@@ -21,12 +21,10 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
         </dependency>
         <dependency>
             <groupId>com.jcabi</groupId>
             <artifactId>jcabi-aspects</artifactId>
-            <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
