@@ -51,92 +51,92 @@
             <dependency>
                 <groupId>io.zipkin.brave</groupId>
                 <artifactId>brave-bom</artifactId>
-                <version>${brave.version}</version>
+                <version><#noparse>${brave.version}</#noparse></version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
-                <version>${log4j.version}</version>
+                <version><#noparse>${log4j.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
-                <version>${log4j.version}</version>
+                <version><#noparse>${log4j.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j.version}</version>
+                <version><#noparse>${log4j.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
+                <version><#noparse>${guava.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
+                <version><#noparse>${jackson.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.cmcm.finance</groupId>
                 <artifactId>ccc-client</artifactId>
-                <version>${ccc.version}</version>
+                <version><#noparse>${ccc.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.ctrip.framework.apollo</groupId>
                 <artifactId>apollo-client</artifactId>
-                <version>${apollo-client.version}</version>
+                <version><#noparse>${apollo-client.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>me.yoruichi</groupId>
                 <artifactId>mis</artifactId>
-                <version>${mis.version}</version>
+                <version><#noparse>${mis.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.cmcm.finance</groupId>
                 <artifactId>finance-logging</artifactId>
-                <version>${finance-logging.version}</version>
+                <version><#noparse>${finance-logging.version}</#noparse></version>
             </dependency>
             <!-- dubbo for springboot -->
             <dependency>
                 <groupId>com.alibaba.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${dubbo-spring-boot-starter.version}</version>
+                <version><#noparse>${dubbo-spring-boot-starter.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql-connector-java.version}</version>
+                <version><#noparse>${mysql-connector-java.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox.version}</version>
+                <version><#noparse>${springfox.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox.version}</version>
+                <version><#noparse>${springfox.version}</#noparse></version>
             </dependency>
             <!-- fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <version><#noparse>${fastjson.version}</#noparse></version>
             </dependency>
             <!-- rate limiter -->
             <dependency>
                 <groupId>com.yoruichi</groupId>
                 <artifactId>ratelimiter</artifactId>
-                <version>${ratelimiter.version}</version>
+                <version><#noparse>${ratelimiter.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-sqs</artifactId>
-                <version>${aws.sqs.version}</version>
+                <version><#noparse>${aws.sqs.version}</#noparse></version>
             </dependency>
         </dependencies>
     </dependencyManagement>
