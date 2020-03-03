@@ -59,6 +59,9 @@ public class DataModelTable {
             if ("LocalDateTime".equals(dm.getJavaType())) {
                 imports.add("import java.time.LocalDateTime;");
             }
+            if ("JSONObject".equals(dm.getJavaType())) {
+                imports.add("import com.alibaba.fastjson.JSONObject;");
+            }
         }
         return imports;
     }

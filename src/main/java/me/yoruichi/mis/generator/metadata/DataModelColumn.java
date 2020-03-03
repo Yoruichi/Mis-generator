@@ -76,6 +76,9 @@ public class DataModelColumn {
         if (javaType.indexOf("java.sql") == 0) {//去掉java类型中的java.sql
             javaType = javaType.substring(9, javaType.length());
         }
+        if (javaType.equals("com.alibaba.fastjson.JSONObject")) {
+            javaType = "JSONObject";
+        }
         return javaType;
     }
 

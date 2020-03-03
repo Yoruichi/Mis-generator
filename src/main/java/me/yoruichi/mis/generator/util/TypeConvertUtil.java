@@ -67,6 +67,9 @@ public class TypeConvertUtil {
         int sqlType = column.getSqlTypeFlag();
         int sqlLength = Integer.valueOf(column.getSqlLength() == null ? "1" : column.getSqlLength());
         boolean unsigned = column.getSqlTypeName().contains("UNSIGNED");
+        if (column.getSqlComment().contains("JSON") || column.getSqlComment().contains("json")) {
+            return "com.alibaba.fastjson.JSONObject";
+        }
         return getJavaType(sqlType, sqlLength, unsigned);
     }
 

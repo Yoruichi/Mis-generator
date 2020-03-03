@@ -6,7 +6,7 @@
 
     <groupId>me.yoruichi</groupId>
     <artifactId>mis-generator</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>Mis-Generator</name>
