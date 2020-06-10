@@ -1,4 +1,4 @@
-package ${basePackage}.config
+package ${basePackage}.config;
 
 import org.apache.catalina.connector.Connector;
 import org.slf4j.Logger;
@@ -47,7 +47,6 @@ public class ShutdownConfig {
 
         @Override
         public void onApplicationEvent(ContextClosedEvent event) {
-            SystemStatus.SYSTEM_RUNNING_NOW.set(false);
             ApplicationContext cont = event.getApplicationContext();
             this.connector.pause();
             Executor executor = this.connector.getProtocolHandler().getExecutor();

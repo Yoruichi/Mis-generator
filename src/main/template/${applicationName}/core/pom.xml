@@ -16,7 +16,7 @@
         <!-- client -->
         <dependency>
             <groupId>${basePackage}</groupId>
-            <artifactId>client</artifactId>
+            <artifactId>${applicationName}-client</artifactId>
             <version><#noparse>${children.version}</#noparse></version>
             <scope>compile</scope>
         </dependency>
@@ -37,17 +37,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- finance logging -->
-        <dependency>
-            <groupId>com.cmcm.finance</groupId>
-            <artifactId>finance-logging</artifactId>
-        </dependency>
-                <!-- sqs -->
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sqs</artifactId>
-        </dependency>
-
                 <!-- apollo -->
         <dependency>
             <groupId>com.ctrip.framework.apollo</groupId>
@@ -78,8 +67,16 @@
 
                 <!-- dubbo for springboot -->
         <dependency>
-            <groupId>com.alibaba.boot</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
         </dependency>
 
                 <!-- web -->
@@ -97,10 +94,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -127,7 +121,7 @@
         </dependency>
         <dependency>
             <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave-instrumentation-dubbo-rpc</artifactId>
+            <artifactId>brave-instrumentation-dubbo</artifactId>
         </dependency>
         <dependency>
             <groupId>io.zipkin.brave</groupId>
@@ -142,12 +136,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-        </dependency>
-
-                <!-- rate limiter -->
-        <dependency>
-            <groupId>com.yoruichi</groupId>
-            <artifactId>ratelimiter</artifactId>
         </dependency>
 
     </dependencies>

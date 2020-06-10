@@ -63,19 +63,12 @@ public class TracingConfig implements WebMvcConfigurer {
 
     @Bean
     public Tracing tracing() {
-        if (null == zipkinAddress || zipkinAddress.length() == 0) {
-            return Tracing.newBuilder()
-                    .localServiceName("${applicationName}-Service")
-                    .propagationFactory(ExtraFieldPropagation.newFactory(B3Propagation.FACTORY, "X-MBX-APIKEY"))
-                    .currentTraceContext(ThreadLocalCurrentTraceContext.newBuilder().addScopeDecorator(MDCScopeDecorator.create()).build())
-                    .spanReporter(span -> log.info("{}", span))
-                    .build();
-        }
+        AsyncReporter<Span> spanReporter = spanReporter();
         return Tracing.newBuilder()
                 .localServiceName("${applicationName}-Service")
-                .propagationFactory(ExtraFieldPropagation.newFactory(B3Propagation.FACTORY, "X-MBX-APIKEY"))
-                .currentTraceContext(ThreadLocalCurrentTraceContext.newBuilder().addScopeDecorator(MDCScopeDecorator.create()).build())
-                .spanReporter(spanReporter())
+                .propagationFactory(BaggagePropagation.newFactoryBuilder(B3Propagation.FACTORY).build())
+                .currentTraceContext(ThreadLocalCurrentTraceContext.newBuilder().addScopeDecorator(MDCScopeDecorator.get()).build())
+                .spanReporter(spanReporter == null ? span -> log.info("{}", span) : spanReporter)
                 .build();
     }
 

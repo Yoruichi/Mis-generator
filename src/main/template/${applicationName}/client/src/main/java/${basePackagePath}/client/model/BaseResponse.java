@@ -15,6 +15,10 @@ public class BaseResponse<T extends Serializable> implements Serializable {
         this.msg = msg;
         this.data = data;
     }
+    @JsonIgnore
+    public boolean isSuccess() {
+        return ErrorCode.SUCCESS_CODE == this.code.intValue();
+    }
 
     public static <T extends Serializable> BaseResponse<T> failedByInvalidParameter(String parameterName) {
         return failed(INVALID_PARAMETER, String.format(INVALID_PARAMETER_MSG, parameterName));

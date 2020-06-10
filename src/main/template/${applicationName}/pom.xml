@@ -22,26 +22,37 @@
     </modules>
 
     <properties>
-        <java.version>1.8</java.version>
         <children.version>0.0.1-SNAPSHOT</children.version>
+        <java.version>1.8</java.version>
         <guava.version>21.0</guava.version>
         <jackson.version>2.9.8</jackson.version>
-        <brave.version>5.5.0</brave.version>
-        <log4j.version>2.11.2</log4j.version>
-        <aws.sqs.version>1.11.562</aws.sqs.version>
-        <ccc.version>0.0.2-SNAPSHOT</ccc.version>
+        <brave.version>5.11.0</brave.version>
+        <ccc.version>1.0.26</ccc.version>
         <apollo-client.version>0.11.0-SNAPSHOT</apollo-client.version>
-        <mis.version>0.0.16</mis.version>
-        <finance-logging.version>0.0.1-SNAPSHOT</finance-logging.version>
-        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <mis.version>0.0.21</mis.version>
+        <dubbo-spring-boot-starter.version>2.7.6</dubbo-spring-boot-starter.version>
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <springfox.version>2.9.2</springfox.version>
-        <fastjson.version>1.2.47</fastjson.version>
-        <ratelimiter.version>0.1.2-SNAPSHOT</ratelimiter.version>
+        <fastjson.version>1.2.62</fastjson.version>
+        <lombok.version>1.18.6</lombok.version>
+        <curator.version>4.3.0</curator.version>
+        <zookeeper.version>3.4.7</zookeeper.version>
+        <skeleton.dubbo.version>0.0.2</skeleton.dubbo.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.superatomfin.skeleton</groupId>
+                <artifactId>dubbo</artifactId>
+                <version><#noparse>${skeleton.dubbo.version}</#noparse></version>
+            </dependency>
+            <dependency>
+                <groupId>com.jcabi</groupId>
+                <artifactId>jcabi-aspects</artifactId>
+                <version>RELEASE</version>
+                <scope>compile</scope>
+            </dependency>
             <dependency>
                 <groupId>com.jcabi</groupId>
                 <artifactId>jcabi-aspects</artifactId>
@@ -55,21 +66,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version><#noparse>${log4j.version}</#noparse></version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version><#noparse>${log4j.version}</#noparse></version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version><#noparse>${log4j.version}</#noparse></version>
-            </dependency>
+
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
@@ -94,11 +91,6 @@
                 <groupId>me.yoruichi</groupId>
                 <artifactId>mis</artifactId>
                 <version><#noparse>${mis.version}</#noparse></version>
-            </dependency>
-            <dependency>
-                <groupId>com.cmcm.finance</groupId>
-                <artifactId>finance-logging</artifactId>
-                <version><#noparse>${finance-logging.version}</#noparse></version>
             </dependency>
             <!-- dubbo for springboot -->
             <dependency>
@@ -126,17 +118,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version><#noparse>${fastjson.version}</#noparse></version>
-            </dependency>
-            <!-- rate limiter -->
-            <dependency>
-                <groupId>com.yoruichi</groupId>
-                <artifactId>ratelimiter</artifactId>
-                <version><#noparse>${ratelimiter.version}</#noparse></version>
-            </dependency>
-            <dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk-sqs</artifactId>
-                <version><#noparse>${aws.sqs.version}</#noparse></version>
             </dependency>
         </dependencies>
     </dependencyManagement>

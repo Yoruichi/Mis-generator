@@ -14,7 +14,7 @@ public class TypeConvertUtil {
 //key是java.sql.Types中的值，value是对应的java类型
 
     static {
-        typeMap.put(Types.TINYINT, "java.lang.Byte");//
+        typeMap.put(Types.TINYINT, "java.lang.Integer");//
         typeMap.put(Types.SMALLINT, "java.lang.Integer");//
         typeMap.put(Types.INTEGER, "java.lang.Integer");//
         typeMap.put(Types.BIGINT, "java.lang.Long");//
@@ -48,9 +48,9 @@ public class TypeConvertUtil {
      */
     public static String getJavaType(int sqlType, int sqlLength, boolean unsigned) {
         String javaType = (String) typeMap.get(sqlType);
-        if (sqlType == Types.TINYINT && sqlLength == 1) {
-            javaType = "java.lang.Boolean";
-        }
+//        if (sqlType == Types.TINYINT && sqlLength == 1) {
+//            javaType = "java.lang.Boolean";
+//        }
         if (sqlType == Types.INTEGER && unsigned) {
             javaType = "java.lang.Long";
         }
@@ -68,7 +68,7 @@ public class TypeConvertUtil {
         int sqlLength = Integer.valueOf(column.getSqlLength() == null ? "1" : column.getSqlLength());
         boolean unsigned = column.getSqlTypeName().contains("UNSIGNED");
         if (column.getSqlComment().contains("JSON") || column.getSqlComment().contains("json")) {
-            return "com.alibaba.fastjson.JSONObject";
+            return "com.fasterxml.jackson.databind.JsonNode";
         }
         return getJavaType(sqlType, sqlLength, unsigned);
     }
