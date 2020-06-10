@@ -78,48 +78,48 @@ public class Generator {
         for (int i = 0; i < args.length; i = i + 2) {
             String value = args[i + 1];
             switch (args[i]) {
-                case "-d":
-                    driver = value;
-                    break;
-                case "-h":
-                    host = value;
-                    break;
-                case "-P":
-                    port = value;
-                    break;
-                case "-url":
-                    url = value;
-                    break;
-                case "-u":
-                    username = value;
-                    break;
-                case "-p":
-                    password = value;
-                    break;
-                case "-b":
-                    db = value;
-                    break;
-                case "-t":
-                    tables = value;
-                    break;
-                case "-template":
-                    templatePath = value.endsWith("/") ? value : value + "/";
-                    break;
-                case "-target":
-                    targetPath = value.endsWith("/") ? value + "gen-java/" : value + "/gen-java/";
-                    break;
-                case "-encode":
-                    encode = value;
-                    break;
-                case "-a":
-                    packageName = value;
-                    break;
-                case "-n":
-                    applicationName = value;
-                    break;
-                case "--desc":
-                    applicationDesc = value;
-                    break;
+            case "-d":
+                driver = value;
+                break;
+            case "-h":
+                host = value;
+                break;
+            case "-P":
+                port = value;
+                break;
+            case "-url":
+                url = value;
+                break;
+            case "-u":
+                username = value;
+                break;
+            case "-p":
+                password = value;
+                break;
+            case "-b":
+                db = value;
+                break;
+            case "-t":
+                tables = value;
+                break;
+            case "-template":
+                templatePath = value.endsWith("/") ? value : value + "/";
+                break;
+            case "-target":
+                targetPath = value.endsWith("/") ? value + "gen-java/" : value + "/gen-java/";
+                break;
+            case "-encode":
+                encode = value;
+                break;
+            case "-a":
+                packageName = value;
+                break;
+            case "-n":
+                applicationName = value;
+                break;
+            case "--desc":
+                applicationDesc = value;
+                break;
             }
         }
         if (Strings.isNullOrEmpty(driver)
@@ -127,7 +127,7 @@ public class Generator {
                 || Strings.isNullOrEmpty(password)
                 || Strings.isNullOrEmpty(packageName)
                 || Strings.isNullOrEmpty(applicationName)
-                ) {
+        ) {
             System.out.println(usage);
             System.exit(-1);
         }
@@ -155,31 +155,25 @@ public class Generator {
                 dmTable.setBasePackage(packageName);
                 dmTable.setApplicationName(applicationName);
                 dmTable.setApplicationDescription(applicationDesc);
-                Configuration conf = FreeMarker
-                        .getFreeMarkerConfiguration(encode, new File(templatePath));//2.获取模板引擎
+                Configuration conf = FreeMarker.getFreeMarkerConfiguration(encode, new File(templatePath));//2.获取模板引擎
                 //3.获取所有模板文件
                 List templateFiles = new ArrayList();
-                FileUtil.listFiles(new File(templatePath),
-                        templateFiles);//将该模板文件路径下的模板文件存放到模板文件集合中（templateFiles）
+                FileUtil.listFiles(new File(templatePath), templateFiles);//将该模板文件路径下的模板文件存放到模板文件集合中（templateFiles）
 
                 //4.处理，先生成文件路径，然后生成目标文件
                 for (int j = 0; j < templateFiles.size(); j++) {//遍历模板文件
                     File templateFile = (File) templateFiles.get(j);
-                    System.out.println("一共" + templateFiles.size() + "个模板。正在处理模板:" + templateFile
-                            .getAbsolutePath());
-                    String templateRelativePath =
-                            FileUtil.getRelativePath(new File(templatePath), templateFile);
+                    System.out.println("一共" + templateFiles.size() + "个模板。正在处理模板:" + templateFile.getAbsolutePath());
+                    String templateRelativePath = FileUtil.getRelativePath(new File(templatePath), templateFile);
                     //对目标路径的处理，首先获取模板的相对路径，然后使用模板引擎，将该路径处理为真实路径，最后根据该真实路径+输出根路径即可
-                    if (templateRelativePath.trim().equals(""))
+                    if (templateRelativePath.trim().equals("")) {
                         continue;
+                    }
                     String outRelativePath = templateRelativePath;//输出相对路径，就是输出文件的相对路径
-                    String targetFilename = FreeMarker.generateString(dmTable,
-                            new Template("targetFilePath", new StringReader(outRelativePath),
-                                    conf));//根据数据模型和模板文件路径，来生成目标文件路径
+                    String targetFilename = FreeMarker
+                            .generateString(dmTable, new Template("targetFilePath", new StringReader(outRelativePath), conf));//根据数据模型和模板文件路径，来生成目标文件路径
 
-                    File targetOutputFilePath =
-                            FileUtil.getTargetOutputFilePath(targetPath,
-                                    targetFilename);//根据目标文件名称获取绝对输出文件名称
+                    File targetOutputFilePath = FileUtil.getTargetOutputFilePath(targetPath, targetFilename);//根据目标文件名称获取绝对输出文件名称
                     System.out.println("目标文件路径" + targetOutputFilePath.getAbsolutePath());
                     System.out.println("目标文件相对路径:" + templateRelativePath);
 
@@ -194,10 +188,10 @@ public class Generator {
                     Template t = conf.getTemplate(templateRelativePath);//获取模板文件对象，注意传入相对于模板根目录的路径文件
                     t.setEncoding(encode);
                     if (targetOutputFilePath.exists()) {//如果文件存在，说明是追加的情况
-//                        String appendContext = FreeMarker.generateString(dmTable, t);
-//                        Writer out = new FileWriter(targetOutputFilePath, true);//第二个参数设置为true，表示追加
-//                        out.write(appendContext);
-//                        out.close();
+                        //                        String appendContext = FreeMarker.generateString(dmTable, t);
+                        //                        Writer out = new FileWriter(targetOutputFilePath, true);//第二个参数设置为true，表示追加
+                        //                        out.write(appendContext);
+                        //                        out.close();
                         continue;
                     }
 
@@ -205,8 +199,7 @@ public class Generator {
                 }
             }
         } catch (Exception e) {
-            System.out.println(
-                    "Something's wrong.Please check parameters and try again.Or check error message below.");
+            System.out.println("Something's wrong.Please check parameters and try again.Or check error message below.");
             e.printStackTrace();
         } finally {
             if (conn != null) {

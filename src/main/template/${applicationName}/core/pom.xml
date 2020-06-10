@@ -132,10 +132,9 @@
             <artifactId>zipkin-sender-okhttp3</artifactId>
         </dependency>
 
-                <!-- fastjson -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
 
     </dependencies>

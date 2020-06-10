@@ -38,6 +38,7 @@
         <curator.version>4.3.0</curator.version>
         <zookeeper.version>3.4.7</zookeeper.version>
         <skeleton.dubbo.version>0.0.2</skeleton.dubbo.version>
+        <jcabi.version>0.22.6</jcabi.version>
     </properties>
 
     <dependencyManagement>
@@ -50,13 +51,7 @@
             <dependency>
                 <groupId>com.jcabi</groupId>
                 <artifactId>jcabi-aspects</artifactId>
-                <version>RELEASE</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.jcabi</groupId>
-                <artifactId>jcabi-aspects</artifactId>
-                <version>RELEASE</version>
+                <version><#noparse>${jcabi.version}</#noparse></version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
@@ -94,9 +89,19 @@
             </dependency>
             <!-- dubbo for springboot -->
             <dependency>
-                <groupId>com.alibaba.boot</groupId>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version><#noparse>${dubbo-spring-boot-starter.version}</#noparse></version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version><#noparse>${curator.version}</#noparse></version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version><#noparse>${curator.version}</#noparse></version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
@@ -113,11 +118,10 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version><#noparse>${springfox.version}</#noparse></version>
             </dependency>
-            <!-- fastjson -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version><#noparse>${fastjson.version}</#noparse></version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.6.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

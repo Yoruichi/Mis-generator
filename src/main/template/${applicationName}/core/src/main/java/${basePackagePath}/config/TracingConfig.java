@@ -3,6 +3,7 @@ package ${basePackage}.config;
 import brave.CurrentSpanCustomizer;
 import brave.SpanCustomizer;
 import brave.Tracing;
+import brave.baggage.BaggagePropagation;
 import brave.context.slf4j.MDCScopeDecorator;
 import brave.http.HttpTracing;
 import brave.propagation.B3Propagation;
